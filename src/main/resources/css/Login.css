@@ -1,0 +1,68 @@
+.vbox {
+    -fx-background-color: #f0f0f0; /* Light background for light mode */
+    -fx-padding: 30;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+}
+
+.combo-box {
+    -fx-min-width: 300px;
+    -fx-padding: 15px;
+    -fx-background-color: #ffffff; /* Light grey background */
+    -fx-border-radius: 5;
+    -fx-border-color: #cccccc; /* Subtle border color */
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-text-fill: #000000; /* Black text */
+}
+
+.combo-box .combo-box-base .text-field .text {
+    -fx-fill: #666666; /* Darker color for Combobox placeholder text */
+}
+
+.text-field, .password-field {
+    -fx-min-width: 300px;
+    -fx-padding: 15px;
+    -fx-background-color: #ffffff; /* Light grey background */
+    -fx-border-radius: 5;
+    -fx-border-color: #cccccc; /* Subtle border color */
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-text-fill: #000000; /* Black text */
+}
+
+.text-field:hover, .password-field:hover {
+    -fx-background-color: #e0e0e0; /* Darker grey on hover */
+}
+
+.button {
+    -fx-min-width: 300px;
+    -fx-padding: 15px;
+    -fx-background-color: #0078d4; /* Blue background for the button */
+    -fx-text-fill: #ffffff; /* White text on the button */
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-border-radius: 5;
+    -fx-cursor: hand; /* Pointer cursor */
+}
+
+.button:hover {
+    -fx-background-color: #005a9e; /* Darker blue on hover */
+}
+
+.label {
+    -fx-text-fill: #ff6666; /* Red text for status label */
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: #0078d4; /* Blue border on focus */
+}
+
+.label.hidden {
+    -fx-opacity: 0; /* Initially hidden */
+}
