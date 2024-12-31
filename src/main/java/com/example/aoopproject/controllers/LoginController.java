@@ -61,8 +61,8 @@ public class LoginController {
     }
 
     private boolean authenticate(String username, String password, String userType) {
-        String table = userType.equals("Admin") ? "Admins" : "Students";
-        String query = "SELECT * FROM " + table + " WHERE username = ? AND password = ?";
+        String table = userType.equals("Admin") ? "Users" : "Users"; // edit if there are separate table for admin and students
+        String query = "SELECT * FROM " + table + " WHERE ID = ? AND Password = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {

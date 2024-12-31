@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://sql108.infinityfree.com:3306/if0_37983228_login_infos";
-    private static final String USER = "if0_37983228";
-    private static final String PASSWORD = "639infinity";
+    private static final String URL = "jdbc:mysql://avnadmin:AVNS_H9hCW7MUv_ryokC8oQJ@mysql-1ff92501-saifulislam-1a66.g.aivencloud.com:12331/defaultdb?ssl-mode=REQUIRED";
+    private static final String USER = "avnadmin";
+    private static final String PASSWORD = "AVNS_H9hCW7MUv_ryokC8oQJ";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
