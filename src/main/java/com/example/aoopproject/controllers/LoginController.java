@@ -4,7 +4,6 @@ import com.example.aoopproject.database.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,13 +19,10 @@ import java.sql.SQLException;
 public class LoginController {
 
     @FXML
-    private VBox mainVBox;
+    public VBox mainVBox;
 
     @FXML
-    private ComboBox<String> userTypeComboBox;
-
-    @FXML
-    private TextField usernameField;
+    private TextField userIdField;
 
     @FXML
     private PasswordField passwordField;
@@ -35,59 +31,85 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
+    private Button registrationButton;
+
+    @FXML
+    private Button deleteUserButton;
+
+    @FXML
     private Label statusLabel;
 
     @FXML
+    void handleDeleteUserButtonAction(ActionEvent event) {
+        Stage stage = (Stage) deleteUserButton.getScene().getWindow();
+        ViewFactory.getInstance().showDeleteUserScreen(stage);
+    }
+
+    @FXML
     void handleLoginButtonAction(ActionEvent event) {
-        String userType = userTypeComboBox.getValue();
-        String username = usernameField.getText();
+        String id = userIdField.getText();
         String password = passwordField.getText();
 
-        if (authenticate(username, password, userType)) {
-            statusLabel.setText("Login Successful");
+        // Validate input (e.g., non-empty, password length, etc.)
+        if (id.isBlank() || password.isBlank()) {
+            statusLabel.setText("Please fill all fields.");
+            statusLabel.setOpacity(1.0);
             statusLabel.setVisible(true);
+            return;
+        }
 
+        String userType = authenticate(id, password);
+        if (userType != null) {
             // Navigate to the appropriate dashboard
             Stage stage = (Stage) loginButton.getScene().getWindow();
-            if ("Admin".equals(userType)) {
-                ViewFactory.getInstance().showAdminDashboard(stage);
-            } else {
+            if ("student".equalsIgnoreCase(userType)) {
                 ViewFactory.getInstance().showStudentDashboard(stage);
+            } else if ("admin".equalsIgnoreCase(userType)) {
+                ViewFactory.getInstance().showAdminDashboard(stage);
             }
         } else {
-            statusLabel.setText("Login Failed");
+            statusLabel.setText("Login Failed - Try Again");
+            statusLabel.setOpacity(1.0);
             statusLabel.setVisible(true);
         }
     }
 
-    private boolean authenticate(String username, String password, String userType) {
-        String table = userType.equals("Admin") ? "Users" : "Users"; // edit if there are separate table for admin and students
-        String query = "SELECT * FROM " + table + " WHERE ID = ? AND Password = ?";
+    @FXML
+    void handleRegisterButtonAction(ActionEvent event) {
+        Stage stage = (Stage) registrationButton.getScene().getWindow();
+        ViewFactory.getInstance().showRegistrationForm(stage);
+    }
+
+    private String authenticate(String id, String password) {
+        String table = "Users";
+        String query = "SELECT Type FROM " + table + " WHERE ID = ? AND Password = ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setString(1, username);
+            statement.setString(1, id);
             statement.setString(2, password);
 
             ResultSet resultSet = statement.executeQuery();
 
-            return resultSet.next(); // return true if a record is found
+            if (resultSet.next()) {
+                return resultSet.getString("Type"); // return the Type if a record is found
+            }
 
         } catch (SQLException e) {
             // Log the exception (consider using a logging framework)
             System.err.println("Database error: " + e.getMessage());
             // Optionally, update the status label to inform the user
             statusLabel.setText("An error occurred. Please try again later.");
+            statusLabel.setOpacity(1.0);
             statusLabel.setVisible(true);
         }
 
-        return false;
+        return null; // return null if authentication fails
     }
 
     @FXML
     public void initialize() {
-        userTypeComboBox.getItems().addAll("Student", "Admin");
         statusLabel.setVisible(false);
     }
 }

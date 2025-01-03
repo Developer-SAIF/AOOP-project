@@ -11,7 +11,7 @@
 .button {
     -fx-min-width: 250px;
     -fx-padding: 15px;
-    -fx-background-color: #0023d4; /* Blue background for buttons */
+    -fx-background-color: #4bbc00; /* Blue background for buttons */
     -fx-text-fill: #ffffff; /* White text on buttons */
     -fx-font-size: 16px;
     -fx-font-family: "Segoe UI", sans-serif;
@@ -20,5 +20,5 @@
 }
 
 .button:hover {
-    -fx-background-color: #005a9e; /* Darker blue on hover */
+    -fx-background-color: #359e00; /* Darker blue on hover */
 }

@@ -2,24 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.RadioButton?>
-<VBox fx:id="mainVBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/Login.css"
-      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.aoopproject.controllers.LoginController">
-    <children>
-        <ComboBox fx:id="userTypeComboBox" promptText="Select User Type"/>
-        <TextField fx:id="usernameField" promptText="Username"/>
-        <PasswordField fx:id="passwordField" promptText="Password"/>
-        <Button fx:id="loginButton" onAction="#handleLoginButtonAction" text="Login"/>
-        <Label fx:id="statusLabel" styleClass="hidden" text="Status"/>
-    </children>
+<VBox fx:id="mainVBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/Login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aoopproject.controllers.LoginController">
     <padding>
-        <Insets bottom="20" left="20" right="20" top="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
+    <TextField fx:id="userIdField" promptText="User ID" />
+    <PasswordField fx:id="passwordField" promptText="Password" />
+    <Button fx:id="loginButton" onAction="#handleLoginButtonAction" text="Login" />
+    <Button fx:id="registrationButton" onAction="#handleRegisterButtonAction" layoutX="30.0" layoutY="154.0" text="Register new user" />
+    <Button fx:id="deleteUserButton" onAction="#handleDeleteUserButtonAction" layoutX="30.0" layoutY="154.0" text="Delete a user" />
+    <Label fx:id="statusLabel" styleClass="hidden" text="Status" />
 </VBox>
