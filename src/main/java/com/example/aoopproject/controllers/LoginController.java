@@ -40,13 +40,13 @@ public class LoginController {
     private Label statusLabel;
 
     @FXML
-    void handleDeleteUserButtonAction(ActionEvent event) {
+    void handleDeleteUserButtonAction(ActionEvent ignoredEvent) {
         Stage stage = (Stage) deleteUserButton.getScene().getWindow();
         ViewFactory.getInstance().showDeleteUserScreen(stage);
     }
 
     @FXML
-    void handleLoginButtonAction(ActionEvent event) {
+    void handleLoginButtonAction(ActionEvent ignoredEvent) {
         String id = userIdField.getText();
         String password = passwordField.getText();
 
@@ -75,7 +75,7 @@ public class LoginController {
     }
 
     @FXML
-    void handleRegisterButtonAction(ActionEvent event) {
+    void handleRegisterButtonAction(ActionEvent ignoredEvent) {
         Stage stage = (Stage) registrationButton.getScene().getWindow();
         ViewFactory.getInstance().showRegistrationForm(stage);
     }

@@ -28,7 +28,7 @@ public class AdminController {
     private Button logoutButton;
 
     @FXML
-    private void handleLogoutButtonAction(ActionEvent event) {
+    private void handleLogoutButtonAction(ActionEvent ignoredEvent) {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         ViewFactory.getInstance().showLoginScreen(stage);
     }

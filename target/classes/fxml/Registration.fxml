@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="mainVBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/Login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aoopproject.controllers.RegistrationController">
+<VBox fx:id="mainVBox" alignment="CENTER" spacing="10.0" stylesheets="@../css/Login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aoopproject.controllers.RegistrationController">
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
